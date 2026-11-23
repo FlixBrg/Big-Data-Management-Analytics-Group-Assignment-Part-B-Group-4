@@ -1,0 +1,31 @@
+# BM04BIM Group Project Part B — Dutch Rail Disruption Duration Analysis
+
+This repository contains the data preparation, exploratory analysis, modelling scripts, and reference datasets used for our report.
+
+The repository is structured the following way:
+
+├── Code scripts/
+│   ├── download_train_data.py
+│   ├── combine_trains.py
+│   ├── download_weather_data.py
+│   ├── prepare_data.py
+│   ├── train_models.py
+│   ├── plot_figure2.py
+│   ├── test_extra_models.py
+│   ├── graphs.py
+│   └── plot_roc_scenarios.py
+├── Datasets/
+│   ├── stations-2023-09.csv
+│   ├── knmi_stations.csv
+│   ├── disruptions_2017_2025.csv
+│   └── modeling_dataset_2017_2025.csv
+└── README.md
+
+> Note on local/raw files: Raw yearly disruption CSVs, 'knmi_hourly_weather_2017_2025.csv' (kept locally due to file size), and intermediate raw folders can be downloaded or reproduced locally using the scripts in 'Code scripts/'.
+
+Order of Execution
+
+1. Collect & Combine Disruption Data: Download the yearly '.csv' files from 'https://www.rijdendetreinen.nl/en/open-data/disruptions#downloads' (or run 'download_train_data.py'), then run 'combine_trains.py' to build 'disruptions_2017_2025.csv'.
+2. Collect Weather Data: Run 'download_weather_data.py' to retrieve hourly KNMI observations and 'knmi_stations.csv'.
+3. 'Prepare & Merge Modeling Dataset:' Run 'prepare_data.py' to clean timestamps, match rail stations to the nearest KNMI weather station, engineer onset features, and produce 'modeling_dataset_2017_2025.csv'.
+4. Exploratory Analysis, Modeling & Plots: Run 'graphs.py', 'train_models.py', 'plot_figure2.py', 'test_extra_models.py', and 'plot_roc_scenarios.py' to reproduce the exploratory charts, Scenario A vs. Scenario B evaluations, and ROC/performance figures.
